@@ -21,17 +21,12 @@ export default {
 
   methods: {
     handleSubmit() {
-      if (this.taskText.trim() === '') {
-        console.log('vazio');
-      };
+      if (this.taskText.trim() === '') { // impede de colocar tarefas fazias
+        return
+        };
       this.$emit('add-task', this.taskText); 
       this.taskText = '';
     }
   },
-
 }
 </script>
-
-<style scoped>
-/* O CSS exclusivo deste componente virá aqui */
-</style>

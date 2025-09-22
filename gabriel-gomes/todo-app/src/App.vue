@@ -7,7 +7,7 @@
     <TodoHeader />
     <TodoForm @add-task="addTask" />
     <TodoActions @set-filter="setFilter" @set-sort="setSortOrder"/>
-    <TodoList :tasks="filteredTasks" @delete-task="deleteTask" @toggle-status="toggleTaskStatus" />
+    <TodoList :tasks="filteredTasks" @edit-task="handleEditTask" @delete-task="deleteTask" @toggle-status="toggleTaskStatus" />
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
     return {
       tasks: [
         { id: 1, text: 'Adicionar tarefas com um campo de texto e um botão de adicionar impedindo a criação de tarefas vazias', completed: true },
-        { id: 2, text: 'Listar todas as tarefas exibindo o status de cada uma (pendente ou concluída). Deverá conter botões para marcar/desmarcar, editar tarefa e excluir', completed: false },
+        { id: 2, text: 'Listar todas as tarefas exibindo o status de cada uma (pendente ou concluída). Deverá conter botões para marcar/desmarcar, editar tarefa e excluir', completed: true },
         { id: 3, text: 'Deve ser possível filtrar as tarefas com as seguintes opções: Todas, Pendentes e Concluídas;', completed: true },
         { id: 4, text: 'Deverá conter uma forma de ordenar a lista de tarefas com: Criadas recentemente e antigamente (pode incluir outras ordenações se achar necessário);', completed: true },
         { id: 5, text: 'Salvar as tarefas utilizando um store global (localStorage ou uma solução equivalente) para que ao recarregar a tela seja possível visualizar as tarefas cadastradas;', completed: true },
@@ -62,9 +62,25 @@ export default {
       localStorage.setItem('tasks', JSON.stringify(this.tasks)); // modifica em JSON o LocalStorage do nagevador
         console.log('Lista de tarefas foi salva no localStorage!');
         },  
-    addTask(taskText) {
-        console.log(taskText) // escreve no console as tarefas 
-        },
+    addTask(taskText) { //  recebe o sinal do filho
+        const newTask = {  // adiciona uma nova tarefa a lista
+          id: Date.now(), 
+          text: taskText, 
+          completed: false,
+          };
+          this.tasks = [newTask, ...this.tasks];
+          this.saveTasks(); 
+    },
+    handleEditTask(taskToEdit) {
+      const newText = prompt("Editar tarefa:", taskToEdit.text);       // Usa o prompt do navegador para pedir o novo texto ao usuário
+      if (newText && newText.trim() !== '') {           // Verifica se o usuário não cancelou e se o texto não está vazio
+        const task = this.tasks.find(t => t.id === taskToEdit.id);       // Encontra a tarefa original na lista principal
+        if (task) {          // Atualiza o texto e salva
+          task.text = newText;
+          this.saveTasks();
+        }
+      }
+    },
     setFilter(filterValue) {
         this.currentFilter = filterValue;
     },
@@ -77,15 +93,14 @@ export default {
 // COMPUTED ====----
 computed: {
   filteredTasks() {
-    // --- PARTE 1: O FILTRO (já funciona) ---
-    let filteredList; // Usamos let para poder modificá-la depois
-
+    // filtros
+    let filteredList; // 
     if (this.currentFilter === 'pending') {
-      filteredList = this.tasks.filter(task => !task.completed);
+      filteredList = this.tasks.filter(task => !task.completed); // filtro para tarefas incompletas
     } else if (this.currentFilter === 'completed') {
-      filteredList = this.tasks.filter(task => task.completed);
+      filteredList = this.tasks.filter(task => task.completed); // filtro para tarefas completas
     } else {
-      filteredList = this.tasks;
+      filteredList = this.tasks; 
     }
     const sortedList = [...filteredList]; // copia da lista filtrada
     if (this.sortOrder === 'newest') {

@@ -1,35 +1,36 @@
-# todo-app
+# Desafio 5 - Gerenciador de Tarefas (Todo App)
 
-This template should help get you started developing with Vue 3 in Vite.
+![meu-gerenciador](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgU-tJ1yN7HO3WTgkGwWdeiN-ogZkEwTmduxtspq50PiaEmAJ2jhPrsWD2I4r897fXmjPYd3w5xX6299pkTBNFhjJ1DN1odpZEqpGDDtsB5RdBlwRFxzTFRjVdQEByOh-pR8xuggEC92lpTB_43Meh09aIMXfcyNQMPc0NHAajPxlCMwEPIEUJqfCRL1kk/s1084/meu-gerenciador.jpg)
 
-## Recommended IDE Setup
+Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Pessoa Desenvolvedora Frontend Jr.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## ✨ Funcionalidades Implementadas
 
-## Customize configuration
+- [x] **Adicionar Tarefas:** Criação de novas tarefas com validação para impedir campos vazios.
+- [x] **Gerenciar Tarefas:** Exclusão e edição do texto de tarefas existentes.
+- [x] **Status das Tarefas:** Marcar e desmarcar tarefas como concluídas, com feedback visual.
+- [x] **Persistência de Dados:** As tarefas são salvas no `localStorage` do navegador, mantendo o estado entre as sessões.
+- [x] **Filtros Dinâmicos:** Filtrar a visualização entre "Todas", "Pendentes" e "Concluídas".
+- [x] **Ordenação Dinâmica:** Ordenar as tarefas por data de criação ("Mais Recentes" e "Mais Antigos").
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 🚀 Tecnologias Utilizadas
 
-## Project Setup
+* Vue.js 3 (Options API)
+* Vite
+* Bootstrap 5
+* ESLint + Prettier
 
-```sh
+## ⚙️ Como Executar o Projeto Localmente
+
+```bash
+# 1. Clone este repositório
+git clone [https://github.com/gabrielgomesxp/desafio-05.git](https://github.com/gabrielgomesxp/desafio-05.git)
+
+# 2. Navegue até o diretório do projeto
+cd desafio-05/gabriel-gomes/todo-app
+
+# 3. Instale as dependências
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
