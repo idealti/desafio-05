@@ -1,0 +1,12 @@
+:root {
+  background-color: #FBFBFB;
+  font-size: 0.750rem;
+}
+
+body {
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1280px;
+  background-color: #FBFBFB;
+  color: #000000;
+}
