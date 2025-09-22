@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-tarefas',
-  imports: [],
+  standalone: true,
+  imports: [
+    
+  ],
   templateUrl: './tarefas.component.html',
   styleUrl: './tarefas.component.css'
 })
