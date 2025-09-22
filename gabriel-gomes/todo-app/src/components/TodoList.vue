@@ -1,0 +1,38 @@
+<template>
+  <ul class="list-group">
+    <li v-for="task in tasks" v-bind:key="task.id"  :class="[{ 'completo': task.completed }]" class="list-group-item d-flex justify-content-between align-items-center">
+      <span :class="{ 'text-decoration-line-through text-muted': task.completed }" >
+        {{ task.text }}
+      </span>
+
+      <div class="action-buttons">
+        <button v-if="!task.completed" @click="$emit('toggle-status', task.id)" class="btn btn-sm btn-success">Concluir</button>
+        <button v-else @click="$emit('toggle-status', task.id)" class="btn btn-sm btn-secondary">Desmarcar</button>
+
+        <button @click="$emit('edit-task', task)" class="btn btn-sm btn-warning ms-1">Editar</button>
+        <button @click="$emit('delete-task', task.id)" class="btn btn-sm btn-danger ms-1">Excluir</button>
+      </div>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: 'TodoList',
+  props: ['tasks'],
+  emits: ['delete-task', 'toggle-status', 'edit-task'],
+}
+</script>
+
+<style scoped>
+.action-buttons[data-v-4afa86a5] {
+    min-width: 260px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-end;
+}
+li.completo {
+    background: #eee;
+}
+</style>
