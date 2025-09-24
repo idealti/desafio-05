@@ -1,1 +1,24 @@
-<p>novas-tarefas works!</p>
+<section>
+    <header>       
+        <h2>Criar nova Tarefa</h2>
+    </header>
+    
+    <form>
+            <input type="text" placeholder="Título" [(ngModel)]="titulo" class="input-titulo">
+            <input type="text" placeholder="Descrição..." [(ngModel)]="descricao" class="input-descricao">
+            <input type="date" [(ngModel)]="data" class="input-data">
+    
+        <div>
+            <h3>Status</h3>
+        <input type="checkbox" > Concluída
+        <input type="checkbox" > Pendente
+        </div>
+
+        <div clas="botoes-acoes">
+            <button (click)="NovasTarefas()" class="botão-adicionar">Adicionar Tarefa</button>
+            <button [routerLink]="['/tarefas']" class="botão-voltar">Cancelar</button>
+        </div>  
+        
+    </form>
+
+</section>

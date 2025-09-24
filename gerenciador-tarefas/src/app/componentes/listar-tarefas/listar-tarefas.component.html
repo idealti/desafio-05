@@ -1,1 +1,15 @@
-<p>listar-tarefas works!</p>
+<section>
+    <header>
+        <h2>Minhas Tarefas</h2>               
+
+    </header>
+
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquisar status de tarefas">
+
+<ul>
+  <li *ngFor="let item of itens | filter:searchTerm">
+    {{ item.titulo }}
+  </li>
+</ul>
+
+</section>
