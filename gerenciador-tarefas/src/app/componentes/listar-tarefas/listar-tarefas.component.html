@@ -1,15 +1,23 @@
-<section>
-    <header>
-        <h2>Minhas Tarefas</h2>               
+<section class="tarefa">
+  <header>
+    <h2>Minhas Tarefas</h2>
+  </header>
 
-    </header>
+  <label for="statusSelect">Pesquisar tarefas por status</label>
+  <select id="statusSelect" [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)">
+    <option value="">Selecione o status</option>
+    <option *ngFor="let option of mainOptions" [value]="option.name">
+      {{ option.name }}
+    </option>
+  </select>
 
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquisar status de tarefas">
+  <ul>
+    <li *ngFor="let tarefa of tarefasFiltradas">
+      {{ tarefa.titulo }} - {{ tarefa.status }}
+    </li>
+  </ul>
 
-<ul>
-  <li *ngFor="let item of itens | filter:searchTerm">
-    {{ item.titulo }}
-  </li>
-</ul>
+  <button [routerLink]="['/tarefas']" class="botao">Voltar</button>
+
 
 </section>

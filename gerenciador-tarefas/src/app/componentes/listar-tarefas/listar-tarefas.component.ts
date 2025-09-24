@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from '../../filter.pipe';
-
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -12,27 +11,47 @@ import { FilterPipe } from '../../filter.pipe';
   imports: [
     CommonModule,
     FormsModule,
-    FilterPipe
+    RouterModule
+   
   ],
   templateUrl: './listar-tarefas.component.html',
   styleUrl: './listar-tarefas.component.css'
 })
-export class ListarTarefasComponent implements OnInit {
 
-  searchTerm: string = '';
+  export class ListarTarefasComponent implements OnInit {
+  
+    mainOptions = [
+    { id: 1, name: 'Todos' },
+    { id: 2, name: 'pendente' },
+    { id: 3, name: 'Concluído' }
+  ];
 
-  constructor() { }
+  selectedCategory: string = '';
 
-  ngOnInit(): void {
+  tarefas = [
+    { titulo: 'Estudar Vue.js', status: 'pendente' },
+    { titulo: 'Enviar desafio técnico', status: 'Concluído' },
+    { titulo: 'Ler ', status: 'pendente' },
+  ];
+
+  tarefasFiltradas = [...this.tarefas];
+
+  ngOnInit() {
+    this.filtrarTarefas();
   }
 
-  itens = [
-  { titulo: 'Concluido' },
-  { titulo: 'Todas' },
-  { titulo: 'Pendentes' }
-  
-];
+  onCategoryChange(status: string) {
+    this.selectedCategory = status;
+    this.filtrarTarefas();
+  }
 
+  filtrarTarefas() {
+    if (this.selectedCategory === 'Todos') {
+      this.tarefasFiltradas = [...this.tarefas];
+    } else {
+      this.tarefasFiltradas = this.tarefas.filter(t =>
+        t.status.toLowerCase() === this.selectedCategory.toLowerCase()
+      );
+    }
+  }
 }
-
-  
