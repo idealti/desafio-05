@@ -1,0 +1,54 @@
+.acoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+h1 {
+  margin-top: 80px;
+  color: #158035;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+.container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.ff-inter { font-family: 'Inter', sans-serif; }
+
+
+
+
+.botao {
+  margin: 5px;
+  margin-top: 60px;
+  width: 200px;
+}
+
+.botao {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #158035; 
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.botao:hover {
+  background-color: #a3f1ba; 
+}
+
+
